@@ -2,6 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProperties } from "./productActions";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+
+import ProductDetail from "./components/body/ProductDetail";
+
 class AppWrapper extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchProperties());
@@ -24,8 +35,10 @@ class AppWrapper extends React.Component {
         <ul>
           {properties.map(property => (
             <li key={property.id}>
+              <Link to={'/product-detail/' + property.sfid}>To detail</Link>      
+              <br/>
               Address: {property.address__c}
-              <br />
+              <br/>
               Bath room: {property.baths__c}
               <br />
               Bed: {property.beds__c}

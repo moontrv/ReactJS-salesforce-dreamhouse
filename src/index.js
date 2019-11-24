@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import AppWrapper from "./AppWrapper";
 import Welcome from "./components/body/Welcome";
+import ProductDetail from "./components/body/ProductDetail";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -21,7 +22,7 @@ import {
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-function App() {
+function App() {  
   return (
     <div className="App container">
       <Router>
@@ -50,9 +51,10 @@ function App() {
             <Route path="/favorites">
               <Favorites />
             </Route>
-            <Route path="/">
+            <Route path="/product-detail/:id" children={<ProductDetail />} />
+            <Route exact path="/">
               <Home />
-            </Route>
+            </Route>            
           </Switch>
       </Router>
     </div>

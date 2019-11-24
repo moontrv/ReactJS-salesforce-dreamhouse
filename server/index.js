@@ -25,6 +25,18 @@ app.get("/api/property", (req, res) => {
     });
 });
 
+app.get("/api/property/:id", (req, res) => {
+  var id = req.params.id;
+  axios
+    .get("https://dhprod-201911.herokuapp.com/property/"+id)
+    .then(response => {
+      res.json(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
 app.listen(3001, () =>
   console.log("Express server is running on localhost:3001")
 );
