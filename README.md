@@ -6,7 +6,7 @@ Heroku Connect was used to replicate (sync) Postgres DB to a Salesforce instance
 
 This app uses the same REST endpoints from the original app, building with ReactJS.
 
-To start: from the root project
+To start: (from the root project)
 
-npm install
+npm install  
 npm run dev
