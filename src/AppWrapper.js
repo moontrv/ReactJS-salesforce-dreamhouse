@@ -11,6 +11,8 @@ import {
   useParams
 } from "react-router-dom";
 
+import { Spinner } from "react-bootstrap";
+
 import ProductDetail from "./components/body/ProductDetail";
 
 class AppWrapper extends React.Component {
@@ -26,42 +28,41 @@ class AppWrapper extends React.Component {
     }
 
     if (loading) {
-      return <div>Loading...</div>;
+      return <Spinner animation="border" role="status" className="property-list-wrapper"><span className="sr-only">Loading...</span></Spinner>;
     }
 
     function renderEl(properties) {
       console.log(properties);
       return (
-        <ul>
+        <ul className="property-list-wrapper">
           {properties.map(property => (
-            <li key={property.id}>
-              <Link to={'/product-detail/' + property.sfid}>To detail</Link>      
-              <br/>
-              Address: {property.address__c}
-              <br/>
-              Bath room: {property.baths__c}
-              <br />
-              Bed: {property.beds__c}
-              <br />
-              City: {property.city__c}
-              <br />
-              Address: {property.address__c}
-              <br />
-              Description: {property.description__c}
-              <br />
-              Address: {property.address__c}
-              <br />
-              Picture address: {property.picture__c}
-              <br />
-              Status: {property.status__c}
-              <br />
+            <li key={property.id} className="property-item">
+              <Link to={"/product-detail/" + property.sfid} className="property-link">
+                <div className="row">
+                  <div className="col-xs-12">
+                    <div className="property-list">
+                      <div className="img-list">
+                        <img src={property.picture__c}></img>
+                      </div>
+                      <div className="">
+                        <p>{property.title__c}</p>
+                        <p>
+                          <span>{property.city__c}, </span>
+                          <span>{property.state__c} </span>
+                          <span>{property.price__c}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
       );
     }
 
-    return products.data ? renderEl(products.data) : <p>Loading</p>;
+    return products.data ? renderEl(products.data) : <div>Loading...</div>;
   }
 }
 

@@ -8,7 +8,11 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
+import { Nav } from "react-bootstrap";
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'mdbreact/dist/css/mdb.css';
 import "./index.css";
 
 import {
@@ -22,40 +26,40 @@ import {
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-function App() {  
+function App() {
   return (
     <div className="App container">
       <Router>
-          <ul>
-            <li>
-              <Link to="/">Welcome</Link>
-            </li>
-            <li>
-              <Link to="/properties">Properties</Link>
-            </li>
-            <li>
-              <Link to="/brokers">Brokers</Link>
-            </li>
-            <li>
-              <Link to="/favorites">Favorites</Link>
-            </li>
-          </ul>
+        <Nav justify variant="tabs" defaultActiveKey="/">
+          <Nav.Link as={Link} to="/">
+            Welcome
+          </Nav.Link>
+          <Nav.Link as={Link} to="/properties">
+            Properties
+          </Nav.Link>
+          <Nav.Link as={Link} to="/brokers">
+            Brokers
+          </Nav.Link>
+          <Nav.Link as={Link} to="/favorites">
+            Favorites
+          </Nav.Link>
+        </Nav>
 
-          <Switch>
-            <Route path="/properties">
-              <Properties />
-            </Route>
-            <Route path="/brokers">
-              <Broker />
-            </Route>
-            <Route path="/favorites">
-              <Favorites />
-            </Route>
-            <Route path="/product-detail/:id" children={<ProductDetail />} />
-            <Route exact path="/">
-              <Home />
-            </Route>            
-          </Switch>
+        <Switch>
+          <Route path="/properties">
+            <Properties />
+          </Route>
+          <Route path="/brokers">
+            <Broker />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/product-detail/:id" children={<ProductDetail />} />
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );

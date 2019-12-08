@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.property-list-wrapper, .property-list-detail {
+  margin-top: 15px;
+}
+
+.property-item {
+  margin-bottom: 10px;
+}
+
+.property-list p, .property-list-detail p {
+  margin-bottom: 0;  
+  text-decoration: none;
+}
+
+.property-list a {
+  text-decoration: none;
+}
+
+.img-list {
+  margin-right: 15px;
+}
+
+.img-list img {
+  max-height: 5.6rem;
+  max-width: 5.6rem;
+}
+
+.App ul {
+  list-style-type: none;
+}
+
+.property-list{
+  display: flex;
+  align-content: flex-start;
+}
+
+.image-detail {
+  width: 100%;
+}
+
+.m-mt1rem {
+  margin-top: 1rem;
+}
+
+.m-ml1rem {
+  margin-left: 1rem;
+}
+
+.broker-detail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
